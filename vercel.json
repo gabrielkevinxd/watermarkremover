@@ -1,5 +1,15 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "backend/main.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "frontend/**",
+      "use": "@vercel/static"
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -7,15 +17,19 @@
     },
     {
       "source": "/css/(.*)",
-      "destination": "/frontend/css/$1"
+      "destination": "frontend/css/$1"
     },
     {
       "source": "/js/(.*)",
-      "destination": "/frontend/js/$1"
+      "destination": "frontend/js/$1"
+    },
+    {
+      "source": "/",
+      "destination": "frontend/index.html"
     },
     {
       "source": "/(.*)",
-      "destination": "/frontend/index.html"
+      "destination": "frontend/$1"
     }
   ]
 }
