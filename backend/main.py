@@ -26,6 +26,19 @@ app.add_middleware(
 # Router Implementation
 app.include_router(api_router, prefix="/api")
 
+# Serve o Frontend - Adicionado para facilitar o deploy no Docker/Coolify
+from fastapi.staticfiles import StaticFiles
+import os
+
+frontend_path = os.path.join(os.path.dirname(__file__), "..", "frontend")
+if os.path.exists(frontend_path):
+    app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
+else:
+    # Fallback para o caso de estar sendo rodado de outra pasta (root)
+    frontend_path_root = os.path.join(os.getcwd(), "frontend")
+    if os.path.exists(frontend_path_root):
+        app.mount("/", StaticFiles(directory=frontend_path_root, html=True), name="frontend")
+
 @app.get("/health")
 async def health_check():
     return {"status": "healthy", "service": "notebooklm-watermark-remover"}
