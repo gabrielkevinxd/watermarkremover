@@ -1,6 +1,5 @@
-// API Base URL - update this when deploying if your API is hosted elsewhere.
-// Here we assume it runs on port 8000 locally
-const API_URL = 'http://localhost:8000/api';
+// API Base URL - using relative path for deployment
+const API_URL = '/api';
 
 const uploadZone = document.getElementById('upload-zone');
 const processingZone = document.getElementById('processing-zone');
