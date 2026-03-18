@@ -1,3 +1,8 @@
+import sys
+from pathlib import Path
+# Add current directory to path if running from root (Vercel)
+sys.path.append(str(Path(__file__).parent.resolve()))
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.routes import router as api_router
