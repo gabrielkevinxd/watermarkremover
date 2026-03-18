@@ -1,5 +1,7 @@
 from pydantic_settings import BaseSettings
 from pathlib import Path
+import os
+import platform
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "NotebookLM Watermark Remover API"
@@ -7,11 +9,7 @@ class Settings(BaseSettings):
     PROJECT_VERSION: str = "1.0.0"
     
     # Storage settings
-    import os
-    import platform
-    is_vercel = os.environ.get("VERCEL") == "1"
-    
-    STORAGE_DIR: Path = Path("/tmp/temp") if (is_vercel or platform.system() != "Windows") else Path("./temp")
+    STORAGE_DIR: Path = Path("/tmp/temp") if (os.environ.get("VERCEL") == "1" or platform.system() != "Windows") else Path("./temp")
     UPLOAD_DIR: Path = STORAGE_DIR / "uploads"
     OUTPUT_DIR: Path = STORAGE_DIR / "outputs"
     
