@@ -6,8 +6,12 @@ class Settings(BaseSettings):
     PROJECT_DESCRIPTION: str = "API structure for the NotebookLM PDF Watermark Remover"
     PROJECT_VERSION: str = "1.0.0"
     
-    # Storage settings - automatically resolve to local dir on Windows
-    STORAGE_DIR: Path = Path("./temp")
+    # Storage settings
+    import os
+    import platform
+    is_vercel = os.environ.get("VERCEL") == "1"
+    
+    STORAGE_DIR: Path = Path("/tmp/temp") if (is_vercel or platform.system() != "Windows") else Path("./temp")
     UPLOAD_DIR: Path = STORAGE_DIR / "uploads"
     OUTPUT_DIR: Path = STORAGE_DIR / "outputs"
     
