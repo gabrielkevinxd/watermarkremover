@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotebookLM Watermark Remover</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="blob-wrapper">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    <div id="app" class="container">
+        <nav class="navbar">
+            <h1 class="logo">CleanPDF <span class="badge">PRO</span></h1>
+            <a href="https://github.com/gabrielkevinxd/watermarkremover" target="_blank"
+                class="glass-btn outline">GitHub</a>
+        </nav>
+
+        <main class="main-content">
+            <div class="hero">
+                <h2 class="hero-title">Remova a Marca D'Água do <span>NotebookLM</span> Facilmente</h2>
+                <p class="hero-subtitle">Processe seu PDF de forma rápida e segura. Nossa inteligência remove a marca
+                    d'água de páginas geradas no NotebookLM.</p>
+            </div>
+
+            <!-- Upload Box -->
+            <div id="upload-zone" class="glass-panel uploader">
+                <div class="upload-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                </div>
+                <h3>Arraste seu PDF ou Clique Aqui</h3>
+                <p>Tamanho máximo: 50MB</p>
+                <input type="file" id="file-input" accept=".pdf" hidden />
+                <button class="glass-btn primary mt-4"
+                    onclick="document.getElementById('file-input').click()">Selecionar Arquivo</button>
+            </div>
+
+            <!-- Loading & Progress Area -->
+            <div id="processing-zone" class="glass-panel hidden">
+                <div class="loader-container">
+                    <div class="spinner"></div>
+                    <div class="loader-text">Limpando marca d'água...</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+
+            <!-- End Result Area -->
+            <div id="result-zone" class="glass-panel success hidden">
+                <div class="success-icon">
+                    <svg viewBox="0 0 24 24" fill="none" class="animate-check" stroke="currentColor" stroke-width="3">
+                        <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                </div>
+                <h3>Processo Concluído!</h3>
+                <p id="page-count">Seu PDF agora está limpo.</p>
+                <a id="download-btn" class="glass-btn success mt-4" href="#" download>Baixar PDF Limpo</a>
+                <button class="glass-btn outline mt-4 ml-2" id="reset-btn">Limpar Outro</button>
+            </div>
+
+            <div id="error-zone" class="glass-panel error hidden">
+                <div class="error-icon">❌</div>
+                <h3>Erro no Processamento</h3>
+                <p id="error-message">Ops! Algo deu errado.</p>
+                <button class="glass-btn outline mt-4" id="retry-btn">Tentar Novamente</button>
+            </div>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

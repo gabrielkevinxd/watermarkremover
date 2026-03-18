@@ -1,0 +1,19 @@
+{
+  "name": "notebooklm-watermark-remover-structured",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:backend": "cd backend && .\\venv\\Scripts\\python -m uvicorn main:app --reload --port 8000",
+    "dev:frontend": "cd frontend && npx http-server -p 3000 -c-1",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "http-server": "^14.1.1"
+  }
+}
